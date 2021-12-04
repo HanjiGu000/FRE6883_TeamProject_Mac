@@ -6,6 +6,9 @@
 #include <locale>
 #include <iomanip>
 #include "curl/curl.h"
+#include <fstream>
+#include <map>
+#include <thread>
 
 using namespace std;
 const char* cIWB1000SymbolFile = "Russell_1000_component_stocks.csv";
@@ -87,51 +90,100 @@ int main(void)
     // if everything's all right with the easy handle...
     if (handle)
     {
-   string url_common = "https://eodhistoricaldata.com/api/eod/"; string start_date = "2021-01-01";
-   string end_date = "2021-11-30";
-   // You must replace this API token with yours string api_token = "601390a0a753f2.12891709"; vector<string>::iterator itr = symbolList.begin(); for (; itr != symbolList.end(); itr++)
-   {
-   struct MemoryStruct data; data.memory = NULL; data.size = 0;
-   string symbol = *itr;
-   string url_request = url_common + symbol + ".US?" + "from="
-   + start_date + "&to=" + end_date + "&api_token="
-   + api_token + "&period=d"; curl_easy_setopt(handle, CURLOPT_URL, url_request.c_str());
-       //adding a user agent
-      curl_easy_setopt(handle, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:74.0) Gecko/20100101 Firefox/74.0");
-      curl_easy_setopt(handle, CURLOPT_SSL_VERIFYPEER, 0); curl_easy_setopt(handle, CURLOPT_SSL_VERIFYHOST, 0);
-      fp = fopen(resultfilename, "ab");
-      fprintf(fp, "%s\n", symbol.c_str());
-      curl_easy_setopt(handle, CURLOPT_WRITEFUNCTION, write_data); curl_easy_setopt(handle, CURLOPT_WRITEDATA, fp);
-      result = curl_easy_perform(handle);
-      fprintf(fp, "%c", '\n'); fclose(fp);
-      // check for errors
-      if (result != CURLE_OK) {
-      fprintf(stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror(result));
-      return -1; }
-       curl_easy_setopt(handle, CURLOPT_WRITEFUNCTION, write_data2); curl_easy_setopt(handle, CURLOPT_WRITEDATA, (void*)&data);
-      // perform, then store the expected code in result
-      result = curl_easy_perform(handle);
-      if (result != CURLE_OK) {
-      // if errors have occured, tell us what is wrong with result fprintf(stderr, "curl_easy_perform() failed: %s\n",
-      return 1; }
-      curl_easy_strerror(result));
-       curl_easy_setopt(handle, CURLOPT_WRITEFUNCTION, write_data2); curl_easy_setopt(handle, CURLOPT_WRITEDATA, (void*)&data); result = curl_easy_perform(handle);
-      if (result != CURLE_OK) {
-      // if errors have occurred, tell what is wrong with result fprintf(stderr, "curl_easy_perform() failed: %s\n",
-      return 1; }
-      curl_easy_strerror(result));
-       stringstream sData; sData.str(data.memory); string sValue, sDate; double dValue = 0; string line;
-       cout << symbol << endl;; while (getline(sData, line)) {
-       size_t found = line.find('-');
-       if (found != std::string::npos) { cout<<line<<endl;
-       sDate = line.substr(0, line.find_first_of(',')); line.erase(line.find_last_of(','));
-       sValue = line.substr(line.find_last_of(',') + 1); dValue = strtod(sValue.c_str(), NULL);
-       cout << sDate << " " << std::fixed << ::setprecision(2) << dValue << endl; }
-       } free(data.memory); data.size = 0;
+        string url_common = "https://eodhistoricaldata.com/api/eod/";
+        string start_date = "2021-01-01";
+        string end_date = "2021-11-30";
+        
+        //TODO: You must replace this API token with yours
+        string api_token = "61a6cd6ff23426.12849192";
+        vector<string>::iterator itr = symbolList.begin();
+        for (; itr != symbolList.end(); itr++)
+        {
+            struct MemoryStruct data; data.memory = NULL;
+            data.size = 0;
+            string symbol = *itr;
+            string url_request = url_common + symbol + ".US?" + "from="
+                                    + start_date + "&to=" + end_date + "&api_token="
+                                    + api_token + "&period=d";
+            curl_easy_setopt(handle, CURLOPT_URL, url_request.c_str());
+       
+            //adding a user agent
+            curl_easy_setopt(handle, CURLOPT_USERAGENT,
+                             "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:74.0) Gecko/20100101 Firefox/74.0");
+            curl_easy_setopt(handle, CURLOPT_SSL_VERIFYPEER, 0);
+            curl_easy_setopt(handle, CURLOPT_SSL_VERIFYHOST, 0);
+            fp = fopen(resultfilename, "ab");
+            fprintf(fp, "%s\n", symbol.c_str());
+            
+            curl_easy_setopt(handle, CURLOPT_WRITEFUNCTION, write_data);
+            curl_easy_setopt(handle, CURLOPT_WRITEDATA, fp);
+            result = curl_easy_perform(handle);
+            fprintf(fp, "%c", '\n');
+            fclose(fp);
+            
+            // check for errors
+            if (result != CURLE_OK)
+            {
+                fprintf(stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror(result));
+                return -1;
+            }
+            
+            curl_easy_setopt(handle, CURLOPT_WRITEFUNCTION, write_data2);
+            curl_easy_setopt(handle, CURLOPT_WRITEDATA, (void*)&data);
+            
+            // perform, then store the expected code in result
+            result = curl_easy_perform(handle);
+            
+            if (result != CURLE_OK)
+            {
+                // if errors have occured, tell us what is wrong with result
+                fprintf(stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror(result));
+                return 1;
+            }
+            
+            curl_easy_setopt(handle, CURLOPT_WRITEFUNCTION, write_data2);
+            curl_easy_setopt(handle, CURLOPT_WRITEDATA, (void*)&data);
+            result = curl_easy_perform(handle);
+            
+            if (result != CURLE_OK)
+            {
+                // if errors have occurred, tell what is wrong with result
+                fprintf(stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror(result));
+
+                return 1;
+            }
+            
+            stringstream sData;
+            sData.str(data.memory);
+            string sValue, sDate;
+            double dValue = 0;
+            string line;
+            cout << symbol << endl;
+            while (getline(sData, line))
+            {
+                size_t found = line.find('-');
+                if (found != std::string::npos)
+                {
+                    cout<<line<<endl;
+                    sDate = line.substr(0, line.find_first_of(','));
+                    line.erase(line.find_last_of(','));
+                    sValue = line.substr(line.find_last_of(',') + 1);
+                    dValue = strtod(sValue.c_str(), NULL);
+                    cout << sDate << " " << std::fixed << ::setprecision(2) << dValue << endl;
+                }
+            }
+            free(data.memory);
+            data.size = 0;
    } }
-   else {
-   return -1; }
-   // cleanup since you've used curl_easy_init curl_easy_cleanup(handle);
-   // release resources acquired by curl_global_init() curl_global_cleanup();
-   return 0; }
-   fprintf(stderr, "Curl init failed!\n");
+    else
+    {
+        fprintf(stderr, "Curl init failed!\n");
+        return -1;
+    }
+    // cleanup since you've used curl_easy_init
+    curl_easy_cleanup(handle);
+    // release resources acquired by curl_global_init()
+    curl_global_cleanup();
+    return 0;
+    
+}

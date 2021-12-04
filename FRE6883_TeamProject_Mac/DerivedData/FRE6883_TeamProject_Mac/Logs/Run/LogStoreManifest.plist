@@ -6,6 +6,40 @@
 	<integer>10</integer>
 	<key>logs</key>
 	<dict>
+		<key>8BA21387-A22C-47CF-8EC5-3667F205E2E8</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>8BA21387-A22C-47CF-8EC5-3667F205E2E8.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>FRE6883_TeamProject_Mac project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>FRE6883_TeamProject_Mac</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Run FRE6883_TeamProject_Mac</string>
+			<key>timeStartedRecording</key>
+			<real>660330130.58585501</real>
+			<key>timeStoppedRecording</key>
+			<real>660330174.63371396</real>
+			<key>title</key>
+			<string>Run FRE6883_TeamProject_Mac</string>
+			<key>uniqueIdentifier</key>
+			<string>8BA21387-A22C-47CF-8EC5-3667F205E2E8</string>
+		</dict>
 		<key>94880AC8-09F2-4063-8F65-02C8BB5B3D5E</key>
 		<dict>
 			<key>className</key>
