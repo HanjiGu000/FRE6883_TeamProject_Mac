@@ -6,7 +6,7 @@
 	<integer>10</integer>
 	<key>logs</key>
 	<dict>
-		<key>8BA21387-A22C-47CF-8EC5-3667F205E2E8</key>
+		<key>A864B92F-4650-4DD0-95EE-71102D9A9517</key>
 		<dict>
 			<key>className</key>
 			<string>DBGConsoleLog</string>
@@ -15,7 +15,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
 			<key>fileName</key>
-			<string>8BA21387-A22C-47CF-8EC5-3667F205E2E8.xcactivitylog</string>
+			<string>A864B92F-4650-4DD0-95EE-71102D9A9517.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -32,15 +32,15 @@
 			<key>signature</key>
 			<string>Run FRE6883_TeamProject_Mac</string>
 			<key>timeStartedRecording</key>
-			<real>660330130.58585501</real>
+			<real>660333230.77518797</real>
 			<key>timeStoppedRecording</key>
-			<real>660330174.63371396</real>
+			<real>660333237.82941997</real>
 			<key>title</key>
 			<string>Run FRE6883_TeamProject_Mac</string>
 			<key>uniqueIdentifier</key>
-			<string>8BA21387-A22C-47CF-8EC5-3667F205E2E8</string>
+			<string>A864B92F-4650-4DD0-95EE-71102D9A9517</string>
 		</dict>
-		<key>94880AC8-09F2-4063-8F65-02C8BB5B3D5E</key>
+		<key>B48BE3D6-F2A5-45D8-9628-FEE1B91F5795</key>
 		<dict>
 			<key>className</key>
 			<string>DBGConsoleLog</string>
@@ -49,7 +49,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
 			<key>fileName</key>
-			<string>94880AC8-09F2-4063-8F65-02C8BB5B3D5E.xcactivitylog</string>
+			<string>B48BE3D6-F2A5-45D8-9628-FEE1B91F5795.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -66,47 +66,13 @@
 			<key>signature</key>
 			<string>Run FRE6883_TeamProject_Mac</string>
 			<key>timeStartedRecording</key>
-			<real>660326220.179883</real>
+			<real>660333249.724141</real>
 			<key>timeStoppedRecording</key>
-			<real>660326228.82650101</real>
+			<real>660333255.06992197</real>
 			<key>title</key>
 			<string>Run FRE6883_TeamProject_Mac</string>
 			<key>uniqueIdentifier</key>
-			<string>94880AC8-09F2-4063-8F65-02C8BB5B3D5E</string>
-		</dict>
-		<key>C293A8B2-A487-4355-AD87-D00A3EEFBD5F</key>
-		<dict>
-			<key>className</key>
-			<string>DBGConsoleLog</string>
-			<key>documentTypeString</key>
-			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
-			<key>fileName</key>
-			<string>C293A8B2-A487-4355-AD87-D00A3EEFBD5F.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>S</string>
-			</dict>
-			<key>schemeIdentifier-containerName</key>
-			<string>FRE6883_TeamProject_Mac project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>FRE6883_TeamProject_Mac</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Run FRE6883_TeamProject_Mac</string>
-			<key>timeStartedRecording</key>
-			<real>660330186.30905497</real>
-			<key>timeStoppedRecording</key>
-			<real>660330810.14042795</real>
-			<key>title</key>
-			<string>Run FRE6883_TeamProject_Mac</string>
-			<key>uniqueIdentifier</key>
-			<string>C293A8B2-A487-4355-AD87-D00A3EEFBD5F</string>
+			<string>B48BE3D6-F2A5-45D8-9628-FEE1B91F5795</string>
 		</dict>
 	</dict>
 </dict>
