@@ -74,6 +74,40 @@
 			<key>uniqueIdentifier</key>
 			<string>3A919D2C-CA1F-4530-93C4-5F5F8E9AF9F5</string>
 		</dict>
+		<key>6EC4BD6F-FFDB-45A8-8B3A-B70DC20F6FA8</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.IndexBuildLog</string>
+			<key>fileName</key>
+			<string>6EC4BD6F-FFDB-45A8-8B3A-B70DC20F6FA8.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Index Build</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Index Build</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>0</integer>
+			<key>signature</key>
+			<string>FRE6883_TeamProject_Mac Build Preparation</string>
+			<key>timeStartedRecording</key>
+			<real>660334055.82101405</real>
+			<key>timeStoppedRecording</key>
+			<real>660334055.82975495</real>
+			<key>title</key>
+			<string>FRE6883_TeamProject_Mac Build Preparation</string>
+			<key>uniqueIdentifier</key>
+			<string>6EC4BD6F-FFDB-45A8-8B3A-B70DC20F6FA8</string>
+		</dict>
 		<key>B28863B5-B864-4198-8BBA-8B19AFB0CD3A</key>
 		<dict>
 			<key>className</key>
@@ -175,6 +209,40 @@
 			<string>Workspace Build Description</string>
 			<key>uniqueIdentifier</key>
 			<string>D0304D6C-D235-4F08-8A8F-0097635ACE63</string>
+		</dict>
+		<key>EDE4DEE8-E565-4496-86D3-56B8CF12F251</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.IndexBuildLog</string>
+			<key>fileName</key>
+			<string>EDE4DEE8-E565-4496-86D3-56B8CF12F251.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Index Build</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Index Build</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>0</integer>
+			<key>signature</key>
+			<string>FRE6883_TeamProject_Mac Build Preparation</string>
+			<key>timeStartedRecording</key>
+			<real>660334047.64063001</real>
+			<key>timeStoppedRecording</key>
+			<real>660334047.66496205</real>
+			<key>title</key>
+			<string>FRE6883_TeamProject_Mac Build Preparation</string>
+			<key>uniqueIdentifier</key>
+			<string>EDE4DEE8-E565-4496-86D3-56B8CF12F251</string>
 		</dict>
 		<key>F75ECFB8-133C-431D-BF47-47D5B9A504BF</key>
 		<dict>
