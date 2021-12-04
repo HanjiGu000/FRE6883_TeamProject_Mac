@@ -6,7 +6,7 @@
 	<integer>10</integer>
 	<key>logs</key>
 	<dict>
-		<key>6DBA4A3F-3B66-42B0-A63F-BD35972DF746</key>
+		<key>DDB17E93-022C-4CB5-BE03-8BD98240E4F3</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogMajorGroupSection</string>
@@ -15,35 +15,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.target.product-type.tool</string>
 			<key>fileName</key>
-			<string>6DBA4A3F-3B66-42B0-A63F-BD35972DF746.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>S</string>
-			</dict>
-			<key>signature</key>
-			<string>FRE6883_TeamProject_Mac-bmfeawqgfafifhgrxknccrtvrxwf</string>
-			<key>timeStartedRecording</key>
-			<real>660326219.83481896</real>
-			<key>timeStoppedRecording</key>
-			<real>660326220.16438198</real>
-			<key>title</key>
-			<string>Build target FRE6883_TeamProject_Mac</string>
-			<key>uniqueIdentifier</key>
-			<string>6DBA4A3F-3B66-42B0-A63F-BD35972DF746</string>
-		</dict>
-		<key>D25358B4-F5EB-4B67-88A7-821026191B6A</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogMajorGroupSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.target.product-type.tool</string>
-			<key>fileName</key>
-			<string>D25358B4-F5EB-4B67-88A7-821026191B6A.xcactivitylog</string>
+			<string>DDB17E93-022C-4CB5-BE03-8BD98240E4F3.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -52,15 +24,15 @@
 				<string>W</string>
 			</dict>
 			<key>signature</key>
-			<string>FRE6883_TeamProject_Mac-drzpefwlrnxywpfvqngbjmemvbfd</string>
+			<string>FRE6883_TeamProject_Mac-digwwihjmzhohvgumwapphrpkkdj</string>
 			<key>timeStartedRecording</key>
-			<real>660330185.85336399</real>
+			<real>660333249.31402504</real>
 			<key>timeStoppedRecording</key>
-			<real>660330186.30663896</real>
+			<real>660333249.72192299</real>
 			<key>title</key>
 			<string>Build target FRE6883_TeamProject_Mac</string>
 			<key>uniqueIdentifier</key>
-			<string>D25358B4-F5EB-4B67-88A7-821026191B6A</string>
+			<string>DDB17E93-022C-4CB5-BE03-8BD98240E4F3</string>
 		</dict>
 	</dict>
 	<key>preserveOldLogs</key>
