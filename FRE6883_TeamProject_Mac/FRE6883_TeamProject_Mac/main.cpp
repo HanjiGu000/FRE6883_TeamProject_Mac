@@ -10,11 +10,10 @@
 #include <map>
 #include <thread>
 
-// xiaoyao lalalaa 
-// Hanji
-// xiaoyao edited
+
 using namespace std;
 const char* cIWB1000SymbolFile = "Russell_1000_component_stocks.csv";
+
 
 void populateSymbolVector(vector<string>& symbols)
 {
@@ -74,6 +73,8 @@ int write_data2(void *ptr, size_t size, size_t nmemb, void *data)
 int main(void)
 {
     vector<string> symbolList;
+    // read Russell_1000_component_stocks.csv
+    // and store symbols in a vector of string
     populateSymbolVector(symbolList);
     
     // file pointer to create file that store the data
@@ -94,15 +95,19 @@ int main(void)
     if (handle)
     {
         string url_common = "https://eodhistoricaldata.com/api/eod/";
+        
+        // TODO: need to leave an endpoint for 2N - 1 interval
         string start_date = "2021-01-01";
         string end_date = "2021-11-30";
         
         //TODO: You must replace this API token with yours
         string api_token = "61a6cd6ff23426.12849192";
+        
         vector<string>::iterator itr = symbolList.begin();
         for (; itr != symbolList.end(); itr++)
         {
-            struct MemoryStruct data; data.memory = NULL;
+            struct MemoryStruct data;
+            data.memory = NULL;
             data.size = 0;
             string symbol = *itr;
             string url_request = url_common + symbol + ".US?" + "from="
@@ -115,6 +120,9 @@ int main(void)
                              "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:74.0) Gecko/20100101 Firefox/74.0");
             curl_easy_setopt(handle, CURLOPT_SSL_VERIFYPEER, 0);
             curl_easy_setopt(handle, CURLOPT_SSL_VERIFYHOST, 0);
+            
+            // "ab" append binary
+            // fp is a pointer of FILE, to result.txt
             fp = fopen(resultfilename, "ab");
             fprintf(fp, "%s\n", symbol.c_str());
             
@@ -164,6 +172,7 @@ int main(void)
             cout << symbol << endl;
             while (getline(sData, line))
             {
+                // if not found, the return value of find() will be string::npos
                 size_t found = line.find('-');
                 if (found != std::string::npos)
                 {
@@ -177,7 +186,8 @@ int main(void)
             }
             free(data.memory);
             data.size = 0;
-   } }
+        }
+    }
     else
     {
         fprintf(stderr, "Curl init failed!\n");
