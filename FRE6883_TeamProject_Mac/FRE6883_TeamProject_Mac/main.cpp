@@ -10,6 +10,7 @@
 #include <map>
 #include <thread>
 
+// Hanji
 using namespace std;
 const char* cIWB1000SymbolFile = "Russell_1000_component_stocks.csv";
 
