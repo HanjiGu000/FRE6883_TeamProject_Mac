@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>logFormatVersion</key>
+	<integer>10</integer>
+	<key>logs</key>
+	<dict>
+		<key>65F52D72-C9D1-495F-9065-B7292085E165</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>65F52D72-C9D1-495F-9065-B7292085E165.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>FRE6883_TeamProject_Mac project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>FRE6883_TeamProject_Mac</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build FRE6883_TeamProject_Mac</string>
+			<key>timeStartedRecording</key>
+			<real>660326219.67412901</real>
+			<key>timeStoppedRecording</key>
+			<real>660326220.16625404</real>
+			<key>title</key>
+			<string>Build FRE6883_TeamProject_Mac</string>
+			<key>uniqueIdentifier</key>
+			<string>65F52D72-C9D1-495F-9065-B7292085E165</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

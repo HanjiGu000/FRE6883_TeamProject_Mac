@@ -1,0 +1,61 @@
+{
+  "_buildCommand2" : {
+    "command" : "prepareForIndexing",
+    "enableIndexBuildArena" : true,
+    "targets" : null
+  },
+  "buildCommand" : "build",
+  "configuredTargets" : [
+    {
+      "guid" : "628851d6f27ef8dd63cec3cbb976ae78f11e7503970bc6e044943d68960a9063"
+    }
+  ],
+  "containerPath" : "/Users/hanjigu/Desktop/FRE6883_TeamProject_Mac/FRE6883_TeamProject_Mac.xcodeproj",
+  "continueBuildingAfterErrors" : true,
+  "enableIndexBuildArena" : false,
+  "hideShellScriptEnvironment" : false,
+  "parameters" : {
+    "action" : "indexbuild",
+    "activeArchitecture" : "arm64",
+    "activeRunDestination" : {
+      "disableOnlyActiveArch" : false,
+      "platform" : "macosx",
+      "sdk" : "macosx12.0",
+      "sdkVariant" : "macos",
+      "supportedArchitectures" : [
+        "arm64e",
+        "arm64",
+        "x86_64"
+      ],
+      "targetArchitecture" : "arm64"
+    },
+    "arenaInfo" : {
+      "buildIntermediatesPath" : "/Users/hanjigu/Desktop/FRE6883_TeamProject_Mac/DerivedData/FRE6883_TeamProject_Mac/Index/Build/Intermediates.noindex",
+      "buildProductsPath" : "/Users/hanjigu/Desktop/FRE6883_TeamProject_Mac/DerivedData/FRE6883_TeamProject_Mac/Index/Build/Products",
+      "derivedDataPath" : "/Users/hanjigu/Desktop/FRE6883_TeamProject_Mac/DerivedData",
+      "indexDataStoreFolderPath" : "/Users/hanjigu/Desktop/FRE6883_TeamProject_Mac/DerivedData/FRE6883_TeamProject_Mac/Index/DataStore",
+      "indexEnableDataStore" : true,
+      "indexPCHPath" : "/Users/hanjigu/Desktop/FRE6883_TeamProject_Mac/DerivedData/FRE6883_TeamProject_Mac/Index/PrecompiledHeaders",
+      "pchPath" : "/Users/hanjigu/Desktop/FRE6883_TeamProject_Mac/DerivedData/FRE6883_TeamProject_Mac/Index/Build/Intermediates.noindex/PrecompiledHeaders"
+    },
+    "configurationName" : "Debug",
+    "overrides" : {
+      "synthesized" : {
+        "table" : {
+          "ENABLE_PREVIEWS" : "NO",
+          "INDEX_ARENA_INFO_REGULAR_BUILD_PRODUCTS_DIR" : "/Users/hanjigu/Desktop/FRE6883_TeamProject_Mac/DerivedData/FRE6883_TeamProject_Mac/Build/Products",
+          "ONLY_ACTIVE_ARCH" : "YES"
+        }
+      }
+    }
+  },
+  "qos" : "utility",
+  "schemeCommand" : "launch",
+  "schemeCommand2" : "launch",
+  "shouldCollectMetrics" : false,
+  "showNonLoggedProgress" : true,
+  "useDryRun" : false,
+  "useImplicitDependencies" : true,
+  "useLegacyBuildLocations" : false,
+  "useParallelTargets" : true
+}
