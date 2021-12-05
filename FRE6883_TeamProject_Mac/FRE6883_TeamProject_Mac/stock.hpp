@@ -1,55 +1,82 @@
 //
 //  stock.hpp
-//  FRE6883_TeamProject_Mac
+//  script
 //
-//  Created by Hanji Gu on 12/4/21.
+//  Created by Yipei Zhang on 12/4/21.
 //
 
-#ifndef stock_hpp
-#define stock_hpp
-
-#include <stdio.h>
-#include <string>
-#include <vector>
-
+#pragma once
+#include<string>
+#include<iostream>
+#include "operator.hpp"
+#include<vector>
+#include<map>
 using namespace std;
 
 class stock
 {
 private:
-    // store data from EarningsAccouncement file
     string ticker;
+    int N;
     string annouce_date;
-    double estimate;
+    double estimated;
     double reported;
-    double suprise;
-    double suprise_pct;
-
-    // store bootstraping data
-    vector<double> price;
-    vector<double> daily_return;
-    vector<double> abn_Rit;
-    
+    double surprise;
+    double surprise_percentage;
+    map<string, double> price;
+    map<string,double> daily_return;
+    vector<double> ARIT;
 public:
-    // constructor with parameter
-    stock(string ticker_, string annouce_date_, double estimate_,
-          double reported_, double suprise_, double suprise_pct_)
-    :ticker(ticker_), annouce_date(annouce_date_), estimate(estimate_),
-    reported(reported_), suprise(suprise_), suprise_pct(suprise_pct_) {}
+    stock() {}
+    stock(string ticker_) { ticker = ticker_; }
+    stock(string ticker_, string annouce_date_, double estimated_, double reported_, double surprise_, double surprise_percentage_) {
+        ticker = ticker_; annouce_date = annouce_date_; estimated = estimated_; reported = reported_; surprise = surprise_; surprise_percentage = surprise_percentage_;
+    }
+    stock(string ticker_, int N_) { ticker = ticker_; N = N_; }
+    map<string, double> cal_return();
+    map<string, double> get_return() {
+        return daily_return;
+    }
+    map<string, double> get_price() {
+        return price;
+    }
+    int get_N() {
+        return N;
+    }
     
-    // Get functions
-    vector<double> Get_Price() { return price; }
-    vector<double> Get_Return() { return daily_return; }
-    vector<double> Get_Abn_Rit() { return abn_Rit; }
-    double Get_estimate() { return estimate; }
-    double Get_retported() { return reported; }
-    double Get_suprise() { return suprise; }
-    double Get_suprise_pct() { return suprise_pct; }
     
-    void Calc_Return();
-    void Calc_Abn_Rit();
-    
-    // TODO: To Be Continue
-};
+    string get_annouce_date() {
+        return annouce_date;
+    }
+    double get_estimated() {
+        return estimated;
+    }
 
-#endif /* stock_hpp */
+    double get_reported() { return reported; }
+    double get_surprise() { return surprise; }
+    double get_surprise_percentage() { return surprise_percentage; }
+
+    void cal_ARIT(stock IWB);
+    vector<double> get_ARIT() {
+        return ARIT;
+    }
+    map<string, double> get_benchmark();
+    string get_ticker()
+    {
+        return ticker;
+    }
+    void update_price(map<string, double> price_update)
+
+    {
+        price = price_update;
+    }
+    //vector<float> get_benchmark();
+    //input: string stock name
+    //function: using libcurl function to get all return information we need for stock(stock_name)
+    //also after this function, the private member of this stock object has been initialized
+
+    void set_N(int N_) {
+        N = N_;
+
+    }
+};

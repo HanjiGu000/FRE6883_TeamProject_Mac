@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		3E2BD742275BC62D0074EAA6 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E2BD741275BC62D0074EAA6 /* main.cpp */; };
 		3E2BD75D275C08E00074EAA6 /* stock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E2BD75B275C08E00074EAA6 /* stock.cpp */; };
+		9971696D275D40ED00652251 /* test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9971696B275D40ED00652251 /* test.cpp */; };
+		99716970275D411000652251 /* operator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9971696E275D411000652251 /* operator.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +30,12 @@
 		3E2BD741275BC62D0074EAA6 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		3E2BD75B275C08E00074EAA6 /* stock.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = stock.cpp; sourceTree = "<group>"; };
 		3E2BD75C275C08E00074EAA6 /* stock.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = stock.hpp; sourceTree = "<group>"; };
+		9971696B275D40ED00652251 /* test.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = test.cpp; sourceTree = "<group>"; };
+		9971696C275D40ED00652251 /* test.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = test.hpp; sourceTree = "<group>"; };
+		9971696E275D411000652251 /* operator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = operator.cpp; sourceTree = "<group>"; };
+		9971696F275D411000652251 /* operator.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = operator.hpp; sourceTree = "<group>"; };
+		99716972275D413000652251 /* Libcurl.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Libcurl.hpp; sourceTree = "<group>"; };
+		99716975275D415500652251 /* global.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = global.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +71,12 @@
 				3E2BD741275BC62D0074EAA6 /* main.cpp */,
 				3E2BD75B275C08E00074EAA6 /* stock.cpp */,
 				3E2BD75C275C08E00074EAA6 /* stock.hpp */,
+				9971696B275D40ED00652251 /* test.cpp */,
+				9971696C275D40ED00652251 /* test.hpp */,
+				9971696E275D411000652251 /* operator.cpp */,
+				9971696F275D411000652251 /* operator.hpp */,
+				99716972275D413000652251 /* Libcurl.hpp */,
+				99716975275D415500652251 /* global.hpp */,
 			);
 			path = FRE6883_TeamProject_Mac;
 			sourceTree = "<group>";
@@ -125,7 +139,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E2BD75D275C08E00074EAA6 /* stock.cpp in Sources */,
+				99716970275D411000652251 /* operator.cpp in Sources */,
 				3E2BD742275BC62D0074EAA6 /* main.cpp in Sources */,
+				9971696D275D40ED00652251 /* test.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
