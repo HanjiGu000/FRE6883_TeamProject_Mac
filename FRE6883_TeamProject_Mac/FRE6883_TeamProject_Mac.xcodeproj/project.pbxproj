@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3E2BD742275BC62D0074EAA6 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E2BD741275BC62D0074EAA6 /* main.cpp */; };
+		3E2BD75D275C08E00074EAA6 /* stock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E2BD75B275C08E00074EAA6 /* stock.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,8 @@
 /* Begin PBXFileReference section */
 		3E2BD73E275BC62D0074EAA6 /* FRE6883_TeamProject_Mac */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = FRE6883_TeamProject_Mac; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E2BD741275BC62D0074EAA6 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		3E2BD75B275C08E00074EAA6 /* stock.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = stock.cpp; sourceTree = "<group>"; };
+		3E2BD75C275C08E00074EAA6 /* stock.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = stock.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +61,8 @@
 			isa = PBXGroup;
 			children = (
 				3E2BD741275BC62D0074EAA6 /* main.cpp */,
+				3E2BD75B275C08E00074EAA6 /* stock.cpp */,
+				3E2BD75C275C08E00074EAA6 /* stock.hpp */,
 			);
 			path = FRE6883_TeamProject_Mac;
 			sourceTree = "<group>";
@@ -119,6 +124,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E2BD75D275C08E00074EAA6 /* stock.cpp in Sources */,
 				3E2BD742275BC62D0074EAA6 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
