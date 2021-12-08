@@ -39,8 +39,6 @@ void populateSymbolVector(vector<string>& symbols)
 }
 
 
-
-
 int write_data(void* ptr, int size, int nmemb, FILE* stream)
 {
     size_t written;
@@ -99,7 +97,7 @@ int download(void)
     {
         
         string url_common = "https://eodhistoricaldata.com/api/eod/";
-        string start_date = "2021-01-01";
+        string start_date = "2021-11-29";
         string end_date = "2021-11-30";
         // you must replace this API token with yours
         string api_token = "61a6cd6ff23426.12849192";
@@ -142,8 +140,8 @@ int download(void)
             // check for errors
             if (result != CURLE_OK)
             {
-            fprintf(stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror(result));
-            return -1;
+                fprintf(stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror(result));
+                return -1;
             }
 
             curl_easy_setopt(handle, CURLOPT_WRITEFUNCTION, write_data2);
@@ -169,31 +167,32 @@ int download(void)
             cout << symbol << endl;;
             while (getline(sData, line))
             {
-            size_t found = line.find('-');
-            if (found != std::string::npos)
-            {
-            cout<<line<<endl;
-            sDate = line.substr(0, line.find_first_of(','));
-            line.erase(line.find_last_of(','));
-            sValue = line.substr(line.find_last_of(',') + 1);
-            dValue = strtod(sValue.c_str(), NULL);
-            cout << sDate << " " << std::fixed << ::setprecision(2) << dValue << endl;
-            }
+                size_t found = line.find('-');
+                if (found != std::string::npos)
+                {
+                    cout << line << endl;
+                    sDate = line.substr(0, line.find_first_of(','));
+                    line.erase(line.find_last_of(','));
+                    sValue = line.substr(line.find_last_of(',') + 1);
+                    dValue = strtod(sValue.c_str(), NULL);
+                    cout << sDate << " " << std::fixed << ::setprecision(2) << dValue << endl;
+                }
             }
 
             free(data.memory);
             data.size = 0;
-            }
-            }
-            else {
-            fprintf(stderr, "Curl init failed!\n");
-            return -1;
-            }
-            // cleanup since you've used curl_easy_init
-            curl_easy_cleanup(handle);
+        }
+    }
+    else
+    {
+        fprintf(stderr, "Curl init failed!\n");
+        return -1;
+    }
+    // cleanup since you've used curl_easy_init
+    curl_easy_cleanup(handle);
 
-            // release resources acquired by curl_global_init()
-            curl_global_cleanup();
+    // release resources acquired by curl_global_init()
+    curl_global_cleanup();
 
     
     

@@ -19,8 +19,10 @@
 #include "global.hpp"
 #include "test.hpp"
 #include "stock.hpp"
-//#include "operator.hpp"
+//#include "CalcDate.hpp"
+#include "operator.hpp"
 
+using namespace std;
 
 void input_N(global_constant& g)
 {
@@ -39,19 +41,19 @@ void input_N(global_constant& g)
 }
 
 
-int main(void)
+int main()
 {
     //global_constant g;
     //input_N(g);
-    test mytest;
-    mytest.run();
-    
-    map<string, test::pair_data> store;
-    store = mytest.return_object();
-    
-    stock one_stock(store.begin()->first);
-    
-    //download();
+//    test mytest;
+//    mytest.run();
+//    
+//    map<string, test::pair_data> store;
+//    store = mytest.return_object();
+//    
+//    stock one_stock(store.begin()->first);
+//    
+    download();
     return 0;
 }
 
