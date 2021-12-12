@@ -29,8 +29,9 @@ private:
 public:
     stock() {}
     stock(string ticker_) { ticker = ticker_; }
-    stock(string ticker_, string annouce_date_, double estimated_, double reported_, double surprise_, double surprise_percentage_) {
-        ticker = ticker_; annouce_date = annouce_date_; estimated = estimated_; reported = reported_; surprise = surprise_; surprise_percentage = surprise_percentage_;
+    stock(string ticker_, string annouce_date_, double estimated_, double reported_, double surprise_, double surprise_percentage_, int N_)
+    {
+        ticker = ticker_; annouce_date = annouce_date_; estimated = estimated_; reported = reported_; surprise = surprise_; surprise_percentage = surprise_percentage_; N = N_;
     }
     stock(string ticker_, int N_) { ticker = ticker_; N = N_; }
     map<string, double> cal_return();
@@ -70,10 +71,6 @@ public:
     {
         price = price_update;
     }
-    //vector<float> get_benchmark();
-    //input: string stock name
-    //function: using libcurl function to get all return information we need for stock(stock_name)
-    //also after this function, the private member of this stock object has been initialized
 
     void set_N(int N_) {
         N = N_;
