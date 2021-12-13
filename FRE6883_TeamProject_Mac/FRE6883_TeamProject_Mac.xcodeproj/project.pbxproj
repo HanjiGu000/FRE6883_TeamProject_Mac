@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		3E2BD742275BC62D0074EAA6 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E2BD741275BC62D0074EAA6 /* main.cpp */; };
 		3E2BD75D275C08E00074EAA6 /* stock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E2BD75B275C08E00074EAA6 /* stock.cpp */; };
-		3E7E7AAA2766A0FF00714E4C /* group.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E7E7AA82766A0FF00714E4C /* group.cpp */; };
 		3E7E7AB02766A1C800714E4C /* read_earning.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E7E7AAE2766A1C800714E4C /* read_earning.cpp */; };
 		99716970275D411000652251 /* operator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9971696E275D411000652251 /* operator.cpp */; };
 /* End PBXBuildFile section */
@@ -31,14 +30,15 @@
 		3E2BD741275BC62D0074EAA6 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		3E2BD75B275C08E00074EAA6 /* stock.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = stock.cpp; sourceTree = "<group>"; };
 		3E2BD75C275C08E00074EAA6 /* stock.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = stock.hpp; sourceTree = "<group>"; };
-		3E7E7AA82766A0FF00714E4C /* group.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = group.cpp; sourceTree = "<group>"; };
-		3E7E7AA92766A0FF00714E4C /* group.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = group.hpp; sourceTree = "<group>"; };
 		3E7E7AAC2766A19B00714E4C /* ParseDate.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ParseDate.hpp; sourceTree = "<group>"; };
 		3E7E7AAE2766A1C800714E4C /* read_earning.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = read_earning.cpp; sourceTree = "<group>"; };
 		3E7E7AAF2766A1C800714E4C /* read_earning.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = read_earning.hpp; sourceTree = "<group>"; };
+		996A32A12766E9010075A707 /* Libcurl.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Libcurl.hpp; sourceTree = "<group>"; };
+		996A32A42766E92D0075A707 /* shuffle_stock.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = shuffle_stock.hpp; sourceTree = "<group>"; };
+		996A32A72766E9940075A707 /* bootstrapping.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = bootstrapping.hpp; sourceTree = "<group>"; };
 		9971696E275D411000652251 /* operator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = operator.cpp; sourceTree = "<group>"; };
 		9971696F275D411000652251 /* operator.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = operator.hpp; sourceTree = "<group>"; };
-		99716972275D413000652251 /* Libcurl.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Libcurl.hpp; sourceTree = "<group>"; };
+		99716972275D413000652251 /* Libcurl_new.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Libcurl_new.hpp; sourceTree = "<group>"; };
 		99716975275D415500652251 /* global.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = global.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -73,17 +73,18 @@
 			isa = PBXGroup;
 			children = (
 				3E2BD741275BC62D0074EAA6 /* main.cpp */,
-				3E2BD75B275C08E00074EAA6 /* stock.cpp */,
-				3E2BD75C275C08E00074EAA6 /* stock.hpp */,
 				9971696E275D411000652251 /* operator.cpp */,
 				9971696F275D411000652251 /* operator.hpp */,
-				99716972275D413000652251 /* Libcurl.hpp */,
+				996A32A12766E9010075A707 /* Libcurl.hpp */,
+				99716972275D413000652251 /* Libcurl_new.hpp */,
 				99716975275D415500652251 /* global.hpp */,
-				3E7E7AA82766A0FF00714E4C /* group.cpp */,
-				3E7E7AA92766A0FF00714E4C /* group.hpp */,
 				3E7E7AAC2766A19B00714E4C /* ParseDate.hpp */,
 				3E7E7AAE2766A1C800714E4C /* read_earning.cpp */,
 				3E7E7AAF2766A1C800714E4C /* read_earning.hpp */,
+				3E2BD75B275C08E00074EAA6 /* stock.cpp */,
+				3E2BD75C275C08E00074EAA6 /* stock.hpp */,
+				996A32A42766E92D0075A707 /* shuffle_stock.hpp */,
+				996A32A72766E9940075A707 /* bootstrapping.hpp */,
 			);
 			path = FRE6883_TeamProject_Mac;
 			sourceTree = "<group>";
@@ -146,7 +147,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E2BD75D275C08E00074EAA6 /* stock.cpp in Sources */,
-				3E7E7AAA2766A0FF00714E4C /* group.cpp in Sources */,
 				99716970275D411000652251 /* operator.cpp in Sources */,
 				3E2BD742275BC62D0074EAA6 /* main.cpp in Sources */,
 				3E7E7AB02766A1C800714E4C /* read_earning.cpp in Sources */,

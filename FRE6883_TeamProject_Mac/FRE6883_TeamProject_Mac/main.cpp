@@ -20,13 +20,13 @@
 #include "global.hpp"
 #include "stock.hpp"
 #include "Libcurl.hpp"
+//#include "Libcurl_new.hpp"
 #include "read_earning.hpp"
-
-
+#include "bootstrapping.hpp"
+//#include "shuffle_stock.hpp"
 using namespace std;
 typedef vector<double> Vector;
 typedef vector<Vector> Matrix;
-
 
 void input_N(global_constant& g)
 {
@@ -40,6 +40,7 @@ void input_N(global_constant& g)
         cout << "N should be greater than 30 and less than 60" << endl;
         cout << "Please continue to input N" << endl;
         cin >> N_;
+        g.N_days = N_;
     }
     g.N_days = N_;
 }
@@ -50,7 +51,8 @@ int main(void) {
     bool runA = false;
     bool runB = false;
     global_constant g;
-    //bootstrap boot;
+    g.stock_names.resize(3);
+    
     while(true)
     {
         cout << endl;
@@ -62,9 +64,8 @@ int main(void) {
         cout << "D - Show Graph with AAR, AAR-SD, CAAR and CAAR-STD" << endl;
         cout << "E - Pull Informations for One Stock" << endl;
         cout << "F - Exit" << endl;
-   
-        
         cin >> selection;
+        
         switch (selection) {
             case 'A':
             {
@@ -76,22 +77,47 @@ int main(void) {
                 map<string, stock> MeetSymbols;
                 map<string, stock> BeatSymbols;
                 
-                
-                thread download1(ParseIntoMap, ref(MissSymbols), "miss_stocks.txt", g.N_days);
-                thread download2(ParseIntoMap, ref(MeetSymbols), "meet_stocks.txt", g.N_days);
-                thread download3(ParseIntoMap, ref(BeatSymbols), "beat_stocks.txt", g.N_days);
+                thread download1(ParseIntoMap,ref(MissSymbols),"miss_stocks.txt",60);
+                thread download2(ParseIntoMap,ref(MeetSymbols),"meet_stocks.txt",60);
+                thread download3(ParseIntoMap,ref(BeatSymbols),"beat_stocks.txt",60);
                 download1.join();
                 download2.join();
                 download3.join();
-
+                MissSymbols.erase("");
+                MeetSymbols.erase("");
+                BeatSymbols.erase("");
+                
+                g.MissSymbols =MissSymbols;
+                g.MeetSymbols =MeetSymbols;
+                g.BeatSymbols =BeatSymbols;
+                
+                
                 for (map<string, stock>::iterator itr = MissSymbols.begin(); itr != MissSymbols.end(); itr++) {
                     g.global_stock[itr->first] = itr->second;
+                    g.stock_names[0].push_back(itr->first);
+                    
                 }
                 for (map<string, stock>::iterator itr = MeetSymbols.begin(); itr != MeetSymbols.end(); itr++) {
                     g.global_stock[itr->first] = itr->second;
+                    g.stock_names[1].push_back(itr->first);
                 }
                 for (map<string, stock>::iterator itr = BeatSymbols.begin(); itr != BeatSymbols.end(); itr++) {
                     g.global_stock[itr->first] = itr->second;
+                    g.stock_names[2].push_back(itr->first);
+                }
+                g.stock_names[0].erase(g.stock_names[0].begin());
+                g.stock_names[1].erase(g.stock_names[1].begin());
+                g.stock_names[2].erase(g.stock_names[2].begin());
+                
+                string benchmark = "IWB";
+                stock IWB = stock(benchmark);
+                download(IWB, "2020-01-01", "2021-11-30");
+                IWB.set_N(700);
+                g.global_stock[benchmark] = IWB;
+                
+                for (map<string, stock>::iterator itr = g.global_stock.begin(); itr != g.global_stock.end(); itr++) {
+                    itr->second.cal_return();
+                    itr->second.cal_ARIT(g.global_stock[benchmark]);
                 }
                 cout << "Retrive data finished" << endl;
                 runA = true;
@@ -104,56 +130,16 @@ int main(void) {
                     cout << "Please run step A first" << endl;
                     break;
                 }
-                string benchmark = "IWB";
-                int Nsamples;
-                int group_size;
-                //cout << "Enter Ticker for Benchmark Stock:" << endl;
-                //cin >> benchmark;
-                cout << "Enter Sample Size:" << endl;
-                cin >> Nsamples;
-                cout << "Enter size for each group:" << endl;
-                cin >> group_size;
-    
-                stock stock_ = stock(benchmark);
+                vector<vector<double>> miss_together;
+                vector<vector<double>> meet_together;
+                vector<vector<double>> beat_together;
+                miss_together = output_one_sample(g, "miss");
+                meet_together = output_one_sample(g, "meet");
+                beat_together = output_one_sample(g, "beat");
                 
-                download(stock_, "2020-01-01", "2021-11-30");
-                stock_.set_N(700);
-                g.global_stock[benchmark] = stock_;
-                
-                for (map<string, stock>::iterator itr = g.global_stock.begin(); itr != g.global_stock.end(); itr++) {
-                    itr->second.cal_return();
-                }
-
-                for (map<string, stock>::iterator itr = g.global_stock.begin(); itr != g.global_stock.end(); itr++) {
-                    itr->second.cal_ARIT(g.global_stock[benchmark]);
-                }
-                /*
-                boot.Set_N(g);
-                boot.Set_N_samples(Nsamples);
-                boot.set_group_size(group_size);
-                boot.Repeat(g);
-                boot.cal_result_matrix();
-                */
                 cout << "Calculation finished" << endl;
                 runB = true;
                 break;
-                
-                
-                
-            }
-                
-            case 'C':{
-                /*
-                if (!runA) {
-                    cout << "Please run step A first" << endl;
-                    break;
-                }
-                if (!runB) {
-                    cout << "Please run step B first" << endl;
-                    break;
-                }
-                */
-                
             }
                 
             case 'F': {

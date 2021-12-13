@@ -1,8 +1,8 @@
 //
 //  stock.hpp
-//  script
+//  New_try
 //
-//  Created by Yipei Zhang on 12/4/21.
+//  Created by Yipei Zhang on 12/10/21.
 //
 
 #pragma once
@@ -44,8 +44,6 @@ public:
     int get_N() {
         return N;
     }
-    
-    
     string get_annouce_date() {
         return annouce_date;
     }
@@ -71,9 +69,14 @@ public:
     {
         price = price_update;
     }
+    //vector<float> get_benchmark();
+    //input: string stock name
+    //function: using libcurl function to get all return information we need for stock(stock_name)
+    //also after this function, the private member of this stock object has been initialized
 
     void set_N(int N_) {
         N = N_;
 
     }
 };
+

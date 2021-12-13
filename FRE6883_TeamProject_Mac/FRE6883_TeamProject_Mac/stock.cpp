@@ -1,15 +1,14 @@
 //
 //  stock.cpp
-//  script
+//  New_try
 //
-//  Created by Yipei Zhang on 12/4/21.
+//  Created by Yipei Zhang on 12/10/21.
 //
 
-#include <iostream>
-#include <vector>
-#include <string>
 #include "stock.hpp"
-//#include "test.hpp"
+#include<iostream>
+#include<vector>
+#include<string>
 using namespace std;
 
 
@@ -66,3 +65,4 @@ void stock::cal_ARIT(stock IWB)
 
     ARIT = stock_return_vector - benchmark_vector;
 }
+
