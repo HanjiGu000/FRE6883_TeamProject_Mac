@@ -30,8 +30,6 @@ typedef vector<Vector> Matrix;
 
 void input_N(global_constant& g)
 {
-
-
     int N_;
     cout << "Please input N" << endl;
     cin >> N_;
@@ -91,7 +89,6 @@ int main(void) {
                 g.MeetSymbols =MeetSymbols;
                 g.BeatSymbols =BeatSymbols;
                 
-                
                 for (map<string, stock>::iterator itr = MissSymbols.begin(); itr != MissSymbols.end(); itr++) {
                     g.global_stock[itr->first] = itr->second;
                     g.stock_names[0].push_back(itr->first);
@@ -119,6 +116,10 @@ int main(void) {
                     itr->second.cal_return();
                     itr->second.cal_ARIT(g.global_stock[benchmark]);
                 }
+                
+                
+                
+
                 cout << "Retrive data finished" << endl;
                 runA = true;
                 break;
@@ -150,6 +151,5 @@ int main(void) {
     
 
     }
-    
     
 }
