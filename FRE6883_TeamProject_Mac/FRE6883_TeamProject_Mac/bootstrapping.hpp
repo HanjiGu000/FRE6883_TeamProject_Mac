@@ -18,8 +18,8 @@ vector<vector<double>> output_one_sample(global_constant &g, string key){
     
     vector<vector<string>> one_sample_together;
     vector<string> one_sample;
-    vector<double> AARt(190);
-    vector<double> average_AARt(190);
+    vector<double> AARt(g.get_N()*2+1);
+    vector<double> average_AARt(g.get_N()*2+1);
     vector<double> CAAR;
     vector<vector<double>> output_info;
     //double aart;
@@ -30,7 +30,7 @@ vector<vector<double>> output_one_sample(global_constant &g, string key){
     
     for(int i = 0; i < 40; i++)
     {
-        one_sample = random(key, clean_price, 80);
+        one_sample = random(key, clean_price, g.group_size);
         one_sample_together.push_back(one_sample);
         
         vector<vector<double>> AARmt;
@@ -39,12 +39,12 @@ vector<vector<double>> output_one_sample(global_constant &g, string key){
             vector<double> target = g.global_stock[one_sample[i]].get_ARIT();
             AARmt.push_back(target);
         }
-        vector<double> AARt(190);
+        vector<double> AARt(g.get_N()*2+1);
         for(int i = 0; i < AARmt.size(); i ++)
         {
             AARt = AARt + AARmt[i];
         }
-        AARt = AARt / 80;
+        AARt = AARt / g.group_size;
         average_AARt = average_AARt + AARt;
     }
     average_AARt = average_AARt / 40;

@@ -75,9 +75,9 @@ int main(void) {
                 map<string, stock> MeetSymbols;
                 map<string, stock> BeatSymbols;
                 
-                thread download1(ParseIntoMap,ref(MissSymbols),"miss_stocks.txt",60);
-                thread download2(ParseIntoMap,ref(MeetSymbols),"meet_stocks.txt",60);
-                thread download3(ParseIntoMap,ref(BeatSymbols),"beat_stocks.txt",60);
+                thread download1(ParseIntoMap,ref(MissSymbols),"miss_stocks.txt",g.get_N());
+                thread download2(ParseIntoMap,ref(MeetSymbols),"meet_stocks.txt",g.get_N());
+                thread download3(ParseIntoMap,ref(BeatSymbols),"beat_stocks.txt",g.get_N());
                 download1.join();
                 download2.join();
                 download3.join();
@@ -116,8 +116,6 @@ int main(void) {
                     itr->second.cal_return();
                     itr->second.cal_ARIT(g.global_stock[benchmark]);
                 }
-                
-                
                 
 
                 cout << "Retrive data finished" << endl;
