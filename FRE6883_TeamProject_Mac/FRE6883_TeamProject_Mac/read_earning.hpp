@@ -20,7 +20,7 @@
 #include "global.hpp"
 #include<stdlib.h>
 
-
+// extracting information from earning annoucement, and divide the stocks into three groups.
 using namespace std;
 class test{
 private:

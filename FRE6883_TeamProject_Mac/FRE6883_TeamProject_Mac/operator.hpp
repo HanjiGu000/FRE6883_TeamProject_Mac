@@ -20,6 +20,7 @@ typedef vector<Matrix> Matrix_all;
 Vector operator+(const Vector& V, const Vector& W);
 Vector operator-(const Vector& V, const Vector& W);
 double operator*(const Vector& V, const Vector& W);
+// add operator&, this is for vector multiplication
 Vector operator&(const Vector& V, const Vector& W);
 
 

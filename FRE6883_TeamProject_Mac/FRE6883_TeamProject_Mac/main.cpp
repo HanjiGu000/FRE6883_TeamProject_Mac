@@ -19,6 +19,7 @@
 
 #include "global.hpp"
 #include "stock.hpp"
+// use Libcurl_new.hpp to run, comment Libcurl.hpp
 #include "Libcurl.hpp"
 //#include "Libcurl_new.hpp"
 #include "read_earning.hpp"
@@ -51,6 +52,8 @@ int main(void) {
     global_constant g;
     g.stock_names.resize(3);
     
+    // save statistics for each group into matrix
+    // 1: AAR, 2: AAR-std, 3: CAAR, 4: CAAR-std
     Matrix miss_group(4);
     Matrix meet_group(4);
     Matrix beat_group(4);
@@ -71,6 +74,7 @@ int main(void) {
         switch (selection) {
             case 'A':
             {
+                // downloading data for all stocks, calculating returns and mapping prices with earning information.
                 test mytest;
                 mytest.run();
                 
@@ -90,6 +94,7 @@ int main(void) {
                 MeetSymbols.erase("");
                 BeatSymbols.erase("");
                 
+                // set different groups information into global constant so we can extract it later
                 g.MissSymbols =MissSymbols;
                 g.MeetSymbols =MeetSymbols;
                 g.BeatSymbols =BeatSymbols;
@@ -128,6 +133,7 @@ int main(void) {
                 
             case 'B':
             {
+                // bootstrapping part
                 if (!runA){
                     cout << "Please run step A first" << endl;
                     break;
@@ -136,6 +142,7 @@ int main(void) {
                 vector<vector<double>> meet_together;
                 vector<vector<double>> beat_together;
                 
+                // use thread to increase the speed of processing
                 thread bootstrap1(output_one_sample,ref(miss_together),ref(g),"miss");
                 thread bootstrap2(output_one_sample,ref(meet_together),ref(g),"meet");
                 thread bootstrap3(output_one_sample,ref(beat_together),ref(g),"beat");
@@ -143,11 +150,10 @@ int main(void) {
                 bootstrap2.join();
                 bootstrap3.join();
                 
-                
+                // set AAR, AAR-std, CAAR, CAAR-std into groups
                 for(int i=0; i<miss_group.size();i++) miss_group[i] = miss_together[i];
                 for(int i=0; i<meet_group.size();i++) meet_group[i] = meet_together[i];
                 for(int i=0; i<beat_group.size();i++) beat_group[i] = beat_together[i];
-                
                 
                 cout << "Calculation finished" << endl;
                 runB = true;
@@ -156,6 +162,7 @@ int main(void) {
                 
             case 'C':
             {
+                // show 4 statistics of assigned group.
                 if (!runA){
                     cout << "Please run step A first" << endl;
                     break;
@@ -192,11 +199,14 @@ int main(void) {
                 
             case 'D':
             {
-                
+                // gnuplot part
+                // We need to use CAAR of each groups to draw gnuplot
+                //miss_group[3] meet_group[3] beat_group[3] are what you need
             }
                 
             case 'E':
             {
+                // showing single stock information
                 if (!runA) {
                     cout << "Please run step A first" << endl;
                     break;

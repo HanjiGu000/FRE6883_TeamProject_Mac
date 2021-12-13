@@ -69,10 +69,7 @@ public:
     {
         price = price_update;
     }
-    //vector<float> get_benchmark();
-    //input: string stock name
-    //function: using libcurl function to get all return information we need for stock(stock_name)
-    //also after this function, the private member of this stock object has been initialized
+
 
     void set_N(int N_) {
         N = N_;

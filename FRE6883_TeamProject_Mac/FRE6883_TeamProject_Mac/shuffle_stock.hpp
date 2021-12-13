@@ -18,6 +18,7 @@
 #include "global.hpp"
 
 using namespace std;
+// to output a list of random stock names
 vector<string> random(string key, map<string, stock> &clean_stock, int group_size){
         vector<string> output_symbols;
         vector<string> keys(3);

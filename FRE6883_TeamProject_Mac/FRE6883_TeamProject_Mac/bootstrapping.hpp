@@ -16,18 +16,22 @@ using namespace std;
 
 vector<vector<double>> output_one_sample(vector<vector<double>> &output, global_constant &g, string key){
     
-    vector<vector<string>> one_sample_together;
-    vector<string> one_sample;
-    vector<double> AARt(190);
-    vector<double> average_AARt(190);
-    vector<double> AAR_std(190);
-    vector<double> CAAR(190);
-    vector<double> CAAR_std(190);
+    // change all 190 to 2*g.get_N()+1 or initialize int price_len = 2*g.get_N()+1; first
     
+    //vector<vector<string>> one_sample_together;
+    vector<string> one_sample;// this is stock name list for one time
+    vector<double> AARt(190); // storing AARt for one sample
+    vector<double> average_AARt(190); // storing final AARt
+    vector<double> AAR_std(190); // calculating AAR-std
+    vector<double> CAAR(190); // storing final CAAR
+    vector<double> CAAR_std(190); // calculating CAAR-std
+    
+    // these two are for calculating standard deviation
     vector<vector<double>> AARt_group;
     vector<vector<double>> CAAR_group;
 
     map<string, stock> clean_price;
+    // check whether the stock does not have enough prices, delete those which do not have 2N+1
     if (key == "miss") clean_price = g.check_size(g.MissSymbols);
     else if (key == "meet") clean_price = g.check_size(g.MeetSymbols);
     else if (key == "beat") clean_price = g.check_size(g.BeatSymbols);
@@ -35,7 +39,7 @@ vector<vector<double>> output_one_sample(vector<vector<double>> &output, global_
     for(int i = 0; i < 40; i++)
     {
         one_sample = random(key, clean_price, 80);
-        one_sample_together.push_back(one_sample);
+        //one_sample_together.push_back(one_sample);
         
         vector<vector<double>> AARmt;
         for(int i = 0; i < one_sample.size(); i++)
@@ -44,6 +48,7 @@ vector<vector<double>> output_one_sample(vector<vector<double>> &output, global_
             AARmt.push_back(target);
         }
         // get average AARt for one sample
+        // change 190 to 2*g.get_N()+1
         vector<double> AARt(190);
         for(int i = 0; i < AARmt.size(); i ++)
         {
@@ -89,7 +94,7 @@ vector<vector<double>> output_one_sample(vector<vector<double>> &output, global_
     {
         CAAR_std[i] = sqrt(CAAR_std[i]);
     }
-    
+    // save information with order
     output.push_back(average_AARt);
     output.push_back(AAR_std);
     output.push_back(CAAR);
