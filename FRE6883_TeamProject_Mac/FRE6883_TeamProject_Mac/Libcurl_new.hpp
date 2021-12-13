@@ -1,10 +1,9 @@
 //
-//  Libcurl.hpp
+//  Libcurl_new.hpp
 //  New_try
 //
-//  Created by Yipei Zhang on 12/10/21.
+//  Created by Yipei Zhang on 12/12/21.
 //
-
 #pragma once
 #include <stdio.h>
 #include <string>
@@ -251,6 +250,7 @@ int download2(map<string, stock>& symbolList)
                 fprintf(stderr, "curl_easy_perform() failed: %s\n",curl_easy_strerror(result));
                 return -1;
             }
+            
             map<string, double> price;
             stringstream sData;
             sData.str(data.memory);

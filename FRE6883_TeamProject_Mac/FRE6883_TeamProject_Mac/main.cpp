@@ -33,9 +33,9 @@ void input_N(global_constant& g)
     int N_;
     cout << "Please input N" << endl;
     cin >> N_;
-    while ((N_ < 30) || ((N_ > 60)))
+    while (N_ < 60)
     {
-        cout << "N should be greater than 30 and less than 60" << endl;
+        cout << "N should be greater than 60" << endl;
         cout << "Please continue to input N" << endl;
         cin >> N_;
         g.N_days = N_;
@@ -57,11 +57,10 @@ int main(void) {
         cout << "Menu" << endl;
         cout << "======" << endl;
         cout << "A - Retrive Historical Price Data for All Stocks" << endl;
-        cout << "B - Retrieve Benchmark Data and Calculate AAR and CAAR" << endl;
-        cout << "C - Show AAR, AAR-SD, CAAR and CAAR-STD For Each Group" << endl;
-        cout << "D - Show Graph with AAR, AAR-SD, CAAR and CAAR-STD" << endl;
-        cout << "E - Pull Informations for One Stock" << endl;
-        cout << "F - Exit" << endl;
+        cout << "B - Bootstrapping, show AAR, AAR-SD, CAAR and CAAR-STD for each group" << endl;
+        cout << "C - Gnuplot Option to show CAAR for all 3 groups" << endl;
+        cout << "D - Pull Informations for One Stock" << endl;
+        cout << "E - Exit" << endl;
         cin >> selection;
         
         switch (selection) {
@@ -116,8 +115,6 @@ int main(void) {
                     itr->second.cal_return();
                     itr->second.cal_ARIT(g.global_stock[benchmark]);
                 }
-                
-
                 cout << "Retrive data finished" << endl;
                 runA = true;
                 break;
@@ -132,19 +129,70 @@ int main(void) {
                 vector<vector<double>> miss_together;
                 vector<vector<double>> meet_together;
                 vector<vector<double>> beat_together;
-                miss_together = output_one_sample(g, "miss");
-                meet_together = output_one_sample(g, "meet");
-                beat_together = output_one_sample(g, "beat");
+                //miss_together = output_one_sample(g, "miss");
+                //meet_together = output_one_sample(g, "meet");
+                //beat_together = output_one_sample(g, "beat");
+                
+                thread bootstrap1(output_one_sample,ref(miss_together),ref(g),"miss");
+                thread bootstrap2(output_one_sample,ref(meet_together),ref(g),"meet");
+                thread bootstrap3(output_one_sample,ref(beat_together),ref(g),"beat");
+                bootstrap1.join();
+                bootstrap2.join();
+                bootstrap3.join();
                 
                 cout << "Calculation finished" << endl;
                 runB = true;
                 break;
             }
                 
-            case 'F': {
+            case 'C':
+            {
+                
+            }
+                
+            case 'D':
+            {
+                if (!runA) {
+                    cout << "Please run step A first" << endl;
+                    break;
+                }
+                string stockinput;
+                bool pass = false;
+                cout << " Input Stock Name(Upper Case): " << endl;
+                cin >> stockinput;
+                map<string,stock>::iterator it;
+                it = g.global_stock.find(stockinput);
+                if (it != g.global_stock.end()) pass = true;
+                    
+                if (pass == false){
+                    cout << "Invalid Stock Name." << endl;
+                    cout << "Back to main menu." << endl;
+                    break;
+                }
+                stock info = g.global_stock[stockinput];
+                map<string, double> input_price = info.get_price();
+                map<string, double> stockinput_return = info.get_return();
+
+                cout << "announce date: " << info.get_annouce_date() << endl;
+                cout << "estimated earning: " << info.get_estimated() << endl;
+                cout << "reported earning: " << info.get_reported() << endl;
+                cout << "surprise: " << info.get_surprise() << endl;
+                cout << "surprise %: " << info.get_surprise_percentage() << endl;
+                cout << "======" << endl;
+                cout << "Date" << "          " << "price" << "   " << "cumulative_return" << endl;
+                double cumulative_return = 0;
+                for (map<string, double>::iterator i = stockinput_return.begin(); i != stockinput_return.end(); i++) {
+                    cumulative_return += i->second;
+                    cout << i->first << "~~~" << input_price[i->first] << "  " << cumulative_return << endl;
+                }
+                break;
+            }
+                
+            case 'E':
+            {
                 exit(10);
             }
-            
+                
         }
     
 

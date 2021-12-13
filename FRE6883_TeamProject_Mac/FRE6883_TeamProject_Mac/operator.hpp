@@ -1,9 +1,8 @@
 //
 //  operator.hpp
-//  script
+//  New_try
 //
-//  Created by Yipei Zhang on 12/2/21.
-//
+//  Created by Yipei Zhang on 12/10/21.
 #pragma once
 
 
@@ -30,5 +29,7 @@ Vector operator^(const Vector& V, const double& a);
 ostream& operator<<(ostream& out, Vector& V);
 ostream& operator<<(ostream& out, Matrix& W);
 ostream& operator<<(ostream& out, vector<Matrix> & W);
+
+
 
 

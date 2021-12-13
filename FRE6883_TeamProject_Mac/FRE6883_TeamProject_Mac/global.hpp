@@ -25,10 +25,11 @@ public:
         map<string, stock> one_group = Symbol_list;
         for(map<string, stock>::iterator itr = one_group.begin(); itr != one_group.end(); itr++)
         {
-            if ((itr->second.get_price()).size() < 190)
+            if ((itr->second.get_price()).size() < (190))
             {
+                int price_size = (int)(itr->second.get_price()).size();
                 one_group.erase(itr);
-                cout<< itr->first <<" does not have enough historical prices"<< endl;
+                cout<< itr->first <<" does not have enough historical prices, only has " << price_size << endl;
             }
         }
         return one_group;

@@ -1,10 +1,9 @@
 //
 //  operator.cpp
-//  script
+//  New_try
 //
-//  Created by Yipei Zhang on 12/2/21.
+//  Created by Yipei Zhang on 12/12/21.
 //
-
 #include "operator.hpp"
 #include <cmath>
 
@@ -20,7 +19,7 @@ Vector operator+(const Vector& V, const Vector& W)
         cout << "Vector 2.size: " << W.size() << endl;
         return a;
     }
-    int d = (int)V.size();
+    int d = V.size();
 
     for (int j = 0; j < d; j++) a[j] = V[j] + W[j];
     return a;
@@ -36,7 +35,7 @@ Vector operator-(const Vector& V, const Vector& W)
         cout << "Vector 2.size: " << W.size() << endl;
         return a;
     }
-    int d = (int)V.size();
+    int d = V.size();
    
     
     for (int j = 0; j < d; j++)
@@ -58,7 +57,7 @@ double operator*(const Vector& V, const Vector& W)
         return sum;
     }
     sum = 0;
-    int d = (int)V.size();
+    int d = V.size();
     
     for (int j = 0; j < d; j++)
     {
@@ -72,28 +71,28 @@ double operator*(const Vector& V, const Vector& W)
 
 Vector operator*( const Vector& W, const double& a)
 {
-    int d = (int)W.size();
+    int d = W.size();
     Vector U(d);
     for (int j = 0; j < d; j++) U[j] = a * W[j];
     return U;
 }
 Vector operator*(const Vector& W, const int& a)
 {
-    int d = (int)W.size();
+    int d = W.size();
     Vector U(d);
     for (int j = 0; j < d; j++) U[j] = a * W[j];
     return U;
 }
 Vector operator/( const Vector& W, const double& a)
 {
-    int d = (int)W.size();
+    int d = W.size();
     Vector U(d);
     for (int j = 0; j < d; j++) U[j] =  W[j]/a;
     return U;
 }
 Vector operator/(const Vector& W, const int& a)
 {
-    int d = (int)W.size();
+    int d = W.size();
     Vector U(d);
     for (int j = 0; j < d; j++) U[j] = W[j] / a;
     return U;
@@ -102,7 +101,7 @@ Vector operator/(const Vector& W, const int& a)
 
 Vector operator^(const Vector& V, const double& a)
 {
-    int d = (int)V.size();
+    int d = V.size();
     Vector U(d);
     for (int j = 0; j < d; j++) U[j] = pow(V[j] ,a);
     return U;
@@ -110,7 +109,7 @@ Vector operator^(const Vector& V, const double& a)
 
 ostream& operator<<(ostream& out, Vector& V)
 {
-    int N = ((int)V.size() - 1) / 2;
+    int N = (V.size() - 1) / 2;
     out << "N" << "     " << "Value" << endl;
     for (int itr = 0; itr < V.size(); itr++)
         out << itr - N << "   "  << V[itr] << endl;
@@ -121,7 +120,7 @@ ostream& operator<<(ostream& out, Vector& V)
 ostream& operator<<(ostream& out, Matrix& W)
 {
     for (int i = 0; i < W[0].size(); i++) {
-        int N = ((int)W[0].size() - 1) / 2;
+        int N = (W[0].size() - 1) / 2;
         out << i - N;
         for (int itr = 0; itr < W.size(); itr++)
             out << "   " << setprecision(6) << W[itr][i];

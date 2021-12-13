@@ -14,14 +14,14 @@
 
 using namespace std;
 
-vector<vector<double>> output_one_sample(global_constant &g, string key){
+vector<vector<double>> output_one_sample(vector<vector<double>> &output, global_constant &g, string key){
     
     vector<vector<string>> one_sample_together;
     vector<string> one_sample;
-    vector<double> AARt(g.get_N()*2+1);
-    vector<double> average_AARt(g.get_N()*2+1);
+    vector<double> AARt(190);
+    vector<double> average_AARt(190);
     vector<double> CAAR;
-    vector<vector<double>> output_info;
+    //vector<vector<double>> output_info;
     //double aart;
     map<string, stock> clean_price;
     if (key == "miss") clean_price = g.check_size(g.MissSymbols);
@@ -30,7 +30,7 @@ vector<vector<double>> output_one_sample(global_constant &g, string key){
     
     for(int i = 0; i < 40; i++)
     {
-        one_sample = random(key, clean_price, g.group_size);
+        one_sample = random(key, clean_price, 80);
         one_sample_together.push_back(one_sample);
         
         vector<vector<double>> AARmt;
@@ -39,12 +39,12 @@ vector<vector<double>> output_one_sample(global_constant &g, string key){
             vector<double> target = g.global_stock[one_sample[i]].get_ARIT();
             AARmt.push_back(target);
         }
-        vector<double> AARt(g.get_N()*2+1);
+        vector<double> AARt(190);
         for(int i = 0; i < AARmt.size(); i ++)
         {
             AARt = AARt + AARmt[i];
         }
-        AARt = AARt / g.group_size;
+        AARt = AARt / 80;
         average_AARt = average_AARt + AARt;
     }
     average_AARt = average_AARt / 40;
@@ -55,10 +55,10 @@ vector<vector<double>> output_one_sample(global_constant &g, string key){
         sum += *itr;
         CAAR.push_back(sum);
     }
-    output_info.push_back(average_AARt);
-    output_info.push_back(CAAR);
+    output.push_back(average_AARt);
+    output.push_back(CAAR);
     cout << "done bootstrapping and calculating for one group" << endl;
-    return output_info;
+    return output;
 }
     
 

@@ -223,8 +223,8 @@ int download2(map<string, stock>& symbolList)
     if(handle)
     {
         string url_common = "https://eodhistoricaldata.com/api/eod/";
-        string start_date = "2021-05-01";
-        string end_date = "2021-11-30";
+        string start_date = "2021-02-01";
+        string end_date = "2021-10-30";
         // you must replace this API token with yours
         string api_token = "61a6cd6ff23426.12849192";
         map<string,stock>::iterator itr = symbolList.begin();
