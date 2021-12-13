@@ -14,10 +14,14 @@ using namespace std;
 
 typedef vector<double> Vector;
 typedef vector<Vector> Matrix;
+typedef vector<Matrix> Matrix_all;
+
 
 Vector operator+(const Vector& V, const Vector& W);
 Vector operator-(const Vector& V, const Vector& W);
 double operator*(const Vector& V, const Vector& W);
+Vector operator&(const Vector& V, const Vector& W);
+
 
 Vector operator*(const Vector& W, const double& a);
 Vector operator/(const Vector& W, const double& a);

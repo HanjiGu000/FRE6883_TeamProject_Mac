@@ -20,7 +20,9 @@ public:
     map<string, stock> BeatSymbols;
     int group_size = 80;
     
-    map<string,stock> check_size(map<string, stock> Symbol_list)
+    
+    
+    map<string,stock> check_size(map<string, stock> &Symbol_list)
     {
         map<string, stock> one_group = Symbol_list;
         for(map<string, stock>::iterator itr = one_group.begin(); itr != one_group.end(); itr++)
@@ -34,5 +36,19 @@ public:
         }
         return one_group;
     }
+    /*
+    Matrix_all set_matrix(vector<vector<double>>&first, vector<vector<double>>&second, vector<vector<double>>&third)
+    {
+        for(int i=0; i<miss_group.size();i++) miss_group[i] = first[i];
+        for(int i=0; i<meet_group.size();i++) meet_group[i] = second[i];
+        for(int i=0; i<beat_group.size();i++) beat_group[i] = third[i];
+        
+        info_all[0] = miss_group;
+        info_all[1] = meet_group;
+        info_all[2] = beat_group;
+        
+        return info_all;
+    }
+    */
 };
 

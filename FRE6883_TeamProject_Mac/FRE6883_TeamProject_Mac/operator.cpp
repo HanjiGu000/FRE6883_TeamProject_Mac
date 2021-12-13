@@ -68,6 +68,27 @@ double operator*(const Vector& V, const Vector& W)
     
     return sum;
 }
+Vector operator&(const Vector& V, const Vector& W)
+{
+    Vector a(V.size());
+    if (V.size() != W.size())
+    {
+        cout << "Vector operator & Dimension Errors" << endl;
+        cout << "Vector 1.size: " << V.size() << endl;
+        cout << "Vector 2.size: " << W.size() << endl;
+        return a;
+    }
+    int d = V.size();
+    
+    for (int j = 0; j < d; j++)
+    {
+        a[j] = a[j] + V[j] * W[j];
+    }
+        
+    
+    return a;
+}
+
 
 Vector operator*( const Vector& W, const double& a)
 {

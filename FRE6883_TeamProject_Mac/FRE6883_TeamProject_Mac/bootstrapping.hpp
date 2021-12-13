@@ -20,9 +20,13 @@ vector<vector<double>> output_one_sample(vector<vector<double>> &output, global_
     vector<string> one_sample;
     vector<double> AARt(190);
     vector<double> average_AARt(190);
-    vector<double> CAAR;
-    //vector<vector<double>> output_info;
-    //double aart;
+    vector<double> AAR_std(190);
+    vector<double> CAAR(190);
+    vector<double> CAAR_std(190);
+    
+    vector<vector<double>> AARt_group;
+    vector<vector<double>> CAAR_group;
+
     map<string, stock> clean_price;
     if (key == "miss") clean_price = g.check_size(g.MissSymbols);
     else if (key == "meet") clean_price = g.check_size(g.MeetSymbols);
@@ -39,24 +43,57 @@ vector<vector<double>> output_one_sample(vector<vector<double>> &output, global_
             vector<double> target = g.global_stock[one_sample[i]].get_ARIT();
             AARmt.push_back(target);
         }
+        // get average AARt for one sample
         vector<double> AARt(190);
         for(int i = 0; i < AARmt.size(); i ++)
         {
             AARt = AARt + AARmt[i];
         }
         AARt = AARt / 80;
+        AARt_group.push_back(AARt);
         average_AARt = average_AARt + AARt;
+        // get CAAR for one sample
+        double sum = 0;
+        vector<double> CAAR_one;
+        for (int i = 0; i < AARt.size(); i++)
+        {
+            sum += AARt[i];
+            CAAR_one.push_back(sum);
+        }
+        CAAR = CAAR + CAAR_one;
+        CAAR_group.push_back(CAAR_one);
     }
+    // get average CAAR and AARt for the whole group
+    CAAR = CAAR / 40;
     average_AARt = average_AARt / 40;
-    
-    double sum = 0;
-    for (vector<double>::iterator itr = average_AARt.begin(); itr != average_AARt.end(); itr ++)
+
+    // compute AAR-std
+    for(int i = 0; i < AARt_group.size(); i ++)
     {
-        sum += *itr;
-        CAAR.push_back(sum);
+        vector<double> minus_mean = (AARt_group[i] - average_AARt);
+        AAR_std = AAR_std + minus_mean & minus_mean;
     }
+    AAR_std = AAR_std/40;
+    for(int i = 0; i < AAR_std.size();i++)
+    {
+        AAR_std[i] = sqrt(AAR_std[i]);
+    }
+    // compute AAR-std
+    for(int i = 0; i < CAAR_group.size(); i ++)
+    {
+        vector<double> minus_mean = (CAAR_group[i] - CAAR);
+        CAAR_std = CAAR_std + minus_mean & minus_mean;
+    }
+    CAAR_std = CAAR_std/40;
+    for(int i = 0; i < AAR_std.size();i++)
+    {
+        CAAR_std[i] = sqrt(CAAR_std[i]);
+    }
+    
     output.push_back(average_AARt);
+    output.push_back(AAR_std);
     output.push_back(CAAR);
+    output.push_back(CAAR_std);
     cout << "done bootstrapping and calculating for one group" << endl;
     return output;
 }

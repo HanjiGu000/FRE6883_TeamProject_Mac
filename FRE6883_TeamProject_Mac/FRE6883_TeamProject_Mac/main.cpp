@@ -25,8 +25,8 @@
 #include "bootstrapping.hpp"
 //#include "shuffle_stock.hpp"
 using namespace std;
-typedef vector<double> Vector;
-typedef vector<Vector> Matrix;
+//typedef vector<double> Vector;
+//typedef vector<Vector> Matrix;
 
 void input_N(global_constant& g)
 {
@@ -51,6 +51,10 @@ int main(void) {
     global_constant g;
     g.stock_names.resize(3);
     
+    Matrix miss_group(4);
+    Matrix meet_group(4);
+    Matrix beat_group(4);
+    
     while(true)
     {
         cout << endl;
@@ -58,9 +62,10 @@ int main(void) {
         cout << "======" << endl;
         cout << "A - Retrive Historical Price Data for All Stocks" << endl;
         cout << "B - Bootstrapping, show AAR, AAR-SD, CAAR and CAAR-STD for each group" << endl;
-        cout << "C - Gnuplot Option to show CAAR for all 3 groups" << endl;
-        cout << "D - Pull Informations for One Stock" << endl;
-        cout << "E - Exit" << endl;
+        cout << "C - Show AAR, AAR-SD, CAAR and CAAR-STD for each group" << endl;
+        cout << "D - Gnuplot Option to show CAAR for all 3 groups" << endl;
+        cout << "E - Pull Informations for One Stock" << endl;
+        cout << "F - Exit" << endl;
         cin >> selection;
         
         switch (selection) {
@@ -74,9 +79,10 @@ int main(void) {
                 map<string, stock> MeetSymbols;
                 map<string, stock> BeatSymbols;
                 
-                thread download1(ParseIntoMap,ref(MissSymbols),"miss_stocks.txt",g.get_N());
-                thread download2(ParseIntoMap,ref(MeetSymbols),"meet_stocks.txt",g.get_N());
-                thread download3(ParseIntoMap,ref(BeatSymbols),"beat_stocks.txt",g.get_N());
+                int N_day = g.get_N();
+                thread download1(ParseIntoMap,ref(MissSymbols),"miss_stocks.txt",N_day);
+                thread download2(ParseIntoMap,ref(MeetSymbols),"meet_stocks.txt",N_day);
+                thread download3(ParseIntoMap,ref(BeatSymbols),"beat_stocks.txt",N_day);
                 download1.join();
                 download2.join();
                 download3.join();
@@ -129,9 +135,6 @@ int main(void) {
                 vector<vector<double>> miss_together;
                 vector<vector<double>> meet_together;
                 vector<vector<double>> beat_together;
-                //miss_together = output_one_sample(g, "miss");
-                //meet_together = output_one_sample(g, "meet");
-                //beat_together = output_one_sample(g, "beat");
                 
                 thread bootstrap1(output_one_sample,ref(miss_together),ref(g),"miss");
                 thread bootstrap2(output_one_sample,ref(meet_together),ref(g),"meet");
@@ -140,6 +143,12 @@ int main(void) {
                 bootstrap2.join();
                 bootstrap3.join();
                 
+                
+                for(int i=0; i<miss_group.size();i++) miss_group[i] = miss_together[i];
+                for(int i=0; i<meet_group.size();i++) meet_group[i] = meet_together[i];
+                for(int i=0; i<beat_group.size();i++) beat_group[i] = beat_together[i];
+                
+                
                 cout << "Calculation finished" << endl;
                 runB = true;
                 break;
@@ -147,10 +156,46 @@ int main(void) {
                 
             case 'C':
             {
+                if (!runA){
+                    cout << "Please run step A first" << endl;
+                    break;
+                }
+                if (!runB){
+                    cout << "Please run step B first" << endl;
+                    break;
+                }
+                cout << "Type miss, meet or beat to extract information" << endl;
+                string group_name;
+                cin >> group_name;
                 
+                if (group_name == "miss")
+                {   cout << "MISS" << endl;
+                    cout << "N" << "      " << "AAR" << "        " << " AAR_STD" << "        " << "CAAR" << "        " << "  CAAR_STD" << endl;
+                    cout << miss_group << endl;
+                }
+                else if (group_name == "meet")
+                {
+                    cout << "MISS" << endl;
+                    cout << " N" << "      " << "  AAR" << "        " << " AAR_STD" << "        " << "CAAR" << "        " << "  CAAR_STD" << endl;
+                    cout << meet_group << endl;
+                }
+                else if (group_name == "beat")
+                {
+                    cout << "MISS" << endl;
+                    cout << "N" << "      " << "AAR" << "        " << " AAR_STD" << "        " << "CAAR" << "        " << "  CAAR_STD" << endl;
+                    cout << beat_group << endl;
+                }
+                
+                
+                break;
             }
                 
             case 'D':
+            {
+                
+            }
+                
+            case 'E':
             {
                 if (!runA) {
                     cout << "Please run step A first" << endl;
@@ -187,8 +232,7 @@ int main(void) {
                 }
                 break;
             }
-                
-            case 'E':
+            case 'F':
             {
                 exit(10);
             }
