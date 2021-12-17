@@ -20,8 +20,8 @@
 
 #include "global.hpp"
 #include "stock.hpp"
-#include "Libcurl.hpp"
-//#include "Libcurl_new.hpp"
+//#include "Libcurl.hpp"
+#include "Libcurl_new.hpp"
 #include "read_earning.hpp"
 #include "bootstrapping.hpp"
 #include "gnuplot.hpp"
@@ -83,6 +83,7 @@ int main(void) {
                 map<string, stock> BeatSymbols;
                 
                 int N_day = g.get_N();
+                ParseIntoMap(BeatSymbols, "beat_stocks.txt", N_day);
                 thread download1(ParseIntoMap,ref(MissSymbols),"miss_stocks.txt",N_day);
                 thread download2(ParseIntoMap,ref(MeetSymbols),"meet_stocks.txt",N_day);
                 thread download3(ParseIntoMap,ref(BeatSymbols),"beat_stocks.txt",N_day);
@@ -106,6 +107,7 @@ int main(void) {
                     g.global_stock[itr->first] = itr->second;
                     g.stock_names[1].push_back(itr->first);
                 }
+                
                 for (map<string, stock>::iterator itr = BeatSymbols.begin(); itr != BeatSymbols.end(); itr++) {
                     g.global_stock[itr->first] = itr->second;
                     g.stock_names[2].push_back(itr->first);
@@ -203,10 +205,10 @@ int main(void) {
                     cout << "Please run step B first" << endl;
                     break;
                 }
-                vector<double> miss_CAAR = miss_group[3];
-                vector<double> meet_CAAR = meet_group[3];
-                vector<double> beat_CAAR = beat_group[3];
-                int datasize = (int)miss_group[3].size();
+                vector<double> miss_CAAR = miss_group[2];
+                vector<double> meet_CAAR = meet_group[2];
+                vector<double> beat_CAAR = beat_group[2];
+                int datasize = g.get_N()*2+1;
                 plotResults(miss_CAAR,meet_CAAR,beat_CAAR,datasize);
                 
                 break;

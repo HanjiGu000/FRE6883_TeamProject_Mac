@@ -23,10 +23,6 @@ using namespace std;
          string line,ticker,date,period_ending,estimate, reported, surprise, surprise_percent;
          while(!fin.eof())
          {
-             int num = 0;
-             if (num == 10)
-                 break;
-             num +=1;
             getline(fin,line);
             stringstream sin(line);
             getline(sin, ticker, ',');

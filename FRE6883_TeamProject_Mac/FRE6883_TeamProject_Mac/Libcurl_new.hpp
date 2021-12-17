@@ -217,6 +217,7 @@ int download2(map<string, stock>& symbolList)
             data.size = 0;
             
             string symbol = itr->first;
+            cout << symbol << endl;
             string EAD = itr->second.get_annouce_date();
             string start_date;
             string end_date;

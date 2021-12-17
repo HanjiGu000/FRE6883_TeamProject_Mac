@@ -73,10 +73,10 @@
 		3E2BD740275BC62D0074EAA6 /* FRE6883_TeamProject_Mac */ = {
 			isa = PBXGroup;
 			children = (
+				3E7E7AAC2766A19B00714E4C /* ParseDate.hpp */,
 				99716972275D413000652251 /* Libcurl_new.hpp */,
 				996A32A12766E9010075A707 /* Libcurl.hpp */,
 				99CD1ACF276860C70001E8B0 /* gnuplot.hpp */,
-				3E7E7AAC2766A19B00714E4C /* ParseDate.hpp */,
 				996A32A42766E92D0075A707 /* shuffle_stock.hpp */,
 				996A32A72766E9940075A707 /* bootstrapping.hpp */,
 				3E7E7AAE2766A1C800714E4C /* read_earning.cpp */,

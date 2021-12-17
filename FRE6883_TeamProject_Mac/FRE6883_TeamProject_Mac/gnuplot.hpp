@@ -57,7 +57,7 @@ void plotResults(vector<double> &ydata1,vector<double> &ydata2,vector<double> &y
         fflush(gnuplotPipe);
         
         tempDataFile = fopen(tempDataFileName1,"w");
-        for (i=0; i <= dataSize; i++) {
+        for (i=0; i < dataSize; i++) {
             x = xData[i];
             y = data1[i];
             fprintf(tempDataFile,"%lf %lf\n",x,y);
@@ -65,7 +65,7 @@ void plotResults(vector<double> &ydata1,vector<double> &ydata2,vector<double> &y
         fclose(tempDataFile);
         
         tempDataFile = fopen(tempDataFileName2,"w");
-        for (i=0; i <= dataSize; i++) {
+        for (i=0; i < dataSize; i++) {
             x2 = xData[i];
             y2 = data2[i];
             fprintf(tempDataFile,"%lf %lf\n",x2,y2);
@@ -73,7 +73,7 @@ void plotResults(vector<double> &ydata1,vector<double> &ydata2,vector<double> &y
         fclose(tempDataFile);
         
         tempDataFile = fopen(tempDataFileName3,"w");
-        for (i=0; i <= dataSize; i++) {
+        for (i=0; i < dataSize; i++) {
             x3 = xData[i];
             y3 = data3[i];
             fprintf(tempDataFile,"%lf %lf\n",x3,y3);
