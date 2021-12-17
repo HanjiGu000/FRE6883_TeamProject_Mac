@@ -20,11 +20,11 @@ vector<vector<double>> output_one_sample(vector<vector<double>> &output, global_
     
     //vector<vector<string>> one_sample_together;
     vector<string> one_sample;// this is stock name list for one time
-    vector<double> AARt(190); // storing AARt for one sample
-    vector<double> average_AARt(190); // storing final AARt
-    vector<double> AAR_std(190); // calculating AAR-std
-    vector<double> CAAR(190); // storing final CAAR
-    vector<double> CAAR_std(190); // calculating CAAR-std
+    vector<double> AARt(g.get_N()*2+1); // storing AARt for one sample
+    vector<double> average_AARt(g.get_N()*2+1); // storing final AARt
+    vector<double> AAR_std(g.get_N()*2+1); // calculating AAR-std
+    vector<double> CAAR(g.get_N()*2+1); // storing final CAAR
+    vector<double> CAAR_std(g.get_N()*2+1); // calculating CAAR-std
     
     // these two are for calculating standard deviation
     vector<vector<double>> AARt_group;
@@ -49,7 +49,7 @@ vector<vector<double>> output_one_sample(vector<vector<double>> &output, global_
         }
         // get average AARt for one sample
         // change 190 to 2*g.get_N()+1
-        vector<double> AARt(190);
+        vector<double> AARt(g.get_N()*2+1);
         for(int i = 0; i < AARmt.size(); i ++)
         {
             AARt = AARt + AARmt[i];

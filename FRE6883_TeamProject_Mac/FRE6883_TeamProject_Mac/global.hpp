@@ -27,7 +27,7 @@ public:
         map<string, stock> one_group = Symbol_list;
         for(map<string, stock>::iterator itr = one_group.begin(); itr != one_group.end(); itr++)
         {
-            if ((itr->second.get_price()).size() < (190))
+            if ((itr->second.get_price()).size() < ( N_days*2+1))
             {
                 int price_size = (int)(itr->second.get_price()).size();
                 one_group.erase(itr);
